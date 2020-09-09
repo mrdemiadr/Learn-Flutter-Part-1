@@ -41,12 +41,6 @@ class _LatihanSatuState extends State<LatihanSatu> {
           )),
           RaisedButton(
             onPressed: () {
-              //tempat mengisi code fungsi
-            },
-            child: Text('Change Color'),
-          ),
-          RaisedButton(
-            onPressed: () {
               setState(() {
                 RandomColor randomColor = RandomColor();
                 gantiWarna = randomColor.randomColor();
