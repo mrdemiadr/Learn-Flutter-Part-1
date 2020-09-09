@@ -1,80 +1,61 @@
 import 'package:flutter/material.dart';
 import 'icon_menu.dart';
-import 'constants.dart';
+import 'package:random_color/random_color.dart';
 
-class LatihanSatu extends StatelessWidget {
+class LatihanSatu extends StatefulWidget {
+  @override
+  _LatihanSatuState createState() => _LatihanSatuState();
+}
+
+class _LatihanSatuState extends State<LatihanSatu> {
+  Color gantiWarna;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Praktek 1 Pertemuan 3'),
       ),
-      body: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconMenu(
-              namaMenu: 'Calls',
-              warnaIconDanText: kWarnaDasarIcon,
-              gambarIcon: Icons.call,
-            ),
-            IconMenu(
-              namaMenu: 'Route',
-              warnaIconDanText: kWarnaDasarIcon,
-              gambarIcon: Icons.navigation,
-            ),
-            IconMenu(
-              namaMenu: 'Share',
-              warnaIconDanText: kWarnaDasarIcon,
-              gambarIcon: Icons.share,
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          Container(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconMenu(
+                namaMenu: 'Calls',
+                warnaIconDanText: gantiWarna,
+                gambarIcon: Icons.call,
+              ),
+              IconMenu(
+                namaMenu: 'Route',
+                warnaIconDanText: gantiWarna,
+                gambarIcon: Icons.navigation,
+              ),
+              IconMenu(
+                namaMenu: 'Share',
+                warnaIconDanText: gantiWarna,
+                gambarIcon: Icons.share,
+              ),
+            ],
+          )),
+          RaisedButton(
+            onPressed: () {
+              //tempat mengisi code fungsi
+            },
+            child: Text('Change Color'),
+          ),
+          RaisedButton(
+            onPressed: () {
+              setState(() {
+                RandomColor randomColor = RandomColor();
+                gantiWarna = randomColor.randomColor();
+              });
+            },
+            child: Text('Change Color'),
+          ),
+        ],
       ),
     );
   }
 }
-
-// class IconMenu extends StatelessWidget {
-//   final IconData gambarIcon;
-//   final String namaMenu;
-//   final Color warnaIconDanText;
-//   const IconMenu(
-//       {Key key, this.gambarIcon, this.warnaIconDanText, this.namaMenu})
-//       : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         Icon(
-//           gambarIcon,
-//           color: Colors.lightBlue,
-//         ),
-//         Container(
-//           child: Text(
-//             namaMenu,
-//             style: TextStyle(color: Colors.lightBlue),
-//           ),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
-//
-// IconMenu(
-// namaMenu: 'Calls',
-// warnaIconDanText: kWarnaDasarIcon,
-// gambarIcon: Icons.call,
-// ),
-// IconMenu(
-// namaMenu: 'Route',
-// warnaIconDanText: kWarnaDasarIcon,
-// gambarIcon: Icons.navigation,
-// ),
-// IconMenu(
-// namaMenu: 'Share',
-// warnaIconDanText: kWarnaDasarIcon,
-// gambarIcon: Icons.share,
-// ),
