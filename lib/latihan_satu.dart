@@ -8,13 +8,18 @@ class LatihanSatu extends StatefulWidget {
 }
 
 class _LatihanSatuState extends State<LatihanSatu> {
-  Color gantiWarna;
+  Color gantiWarna; // untuk ganti warna icon
+  RandomColor randomColor =
+      RandomColor(); // fungsi untuk memilih warna secara acak
+  bool switchButtonState = false; // nilai awal untuk switch button
+  String pilihanWarna; // nilai awal radio button 'null'
+  bool pilihanCheckbox = false; // nilai awal checkbox
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Praktek 1 Pertemuan 3'),
+        title: Text('Pertemuan 4'),
       ),
       body: Column(
         children: [
@@ -42,11 +47,61 @@ class _LatihanSatuState extends State<LatihanSatu> {
           RaisedButton(
             onPressed: () {
               setState(() {
-                RandomColor randomColor = RandomColor();
                 gantiWarna = randomColor.randomColor();
               });
             },
             child: Text('Change Color'),
+          ),
+          Switch(
+            value: switchButtonState,
+            onChanged: (bool value) {
+              setState(() {
+                switchButtonState = value;
+                switchButtonState == true
+                    ? gantiWarna = Colors.black
+                    : gantiWarna = Colors.red;
+              });
+            },
+          ),
+          ListTile(
+            leading: Radio(
+              value: 'Biru',
+              groupValue: pilihanWarna,
+              onChanged: (String value) {
+                setState(() {
+                  pilihanWarna = value;
+                  gantiWarna = Colors.blueAccent;
+                });
+              },
+            ),
+            title: Text('Biru'),
+          ),
+          ListTile(
+            leading: Radio(
+              value: 'Hijau',
+              groupValue: pilihanWarna,
+              onChanged: (String value) {
+                setState(() {
+                  pilihanWarna = value;
+                  gantiWarna = Colors.greenAccent;
+                });
+              },
+            ),
+            title: Text('Hijau'),
+          ),
+          ListTile(
+            leading: Checkbox(
+              value: pilihanCheckbox,
+              onChanged: (bool value) {
+                setState(() {
+                  pilihanCheckbox = value;
+                  pilihanCheckbox == true
+                      ? gantiWarna = Colors.black
+                      : gantiWarna = Colors.grey;
+                });
+              },
+            ),
+            title: Text('Black/Grey'),
           ),
         ],
       ),
