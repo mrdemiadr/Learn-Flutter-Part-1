@@ -71,6 +71,7 @@ class _LatihanSatuState extends State<LatihanSatu> {
                 setState(() {
                   pilihanWarna = value;
                   gantiWarna = Colors.blueAccent;
+                  pilihanCheckbox = false;
                 });
               },
             ),
@@ -84,6 +85,7 @@ class _LatihanSatuState extends State<LatihanSatu> {
                 setState(() {
                   pilihanWarna = value;
                   gantiWarna = Colors.greenAccent;
+                  pilihanCheckbox = false;
                 });
               },
             ),
@@ -95,9 +97,12 @@ class _LatihanSatuState extends State<LatihanSatu> {
               onChanged: (bool value) {
                 setState(() {
                   pilihanCheckbox = value;
-                  pilihanCheckbox == true
-                      ? gantiWarna = Colors.black
-                      : gantiWarna = Colors.grey;
+                  if (pilihanCheckbox == true) {
+                    gantiWarna = Colors.black;
+                    pilihanWarna = null;
+                  } else {
+                    gantiWarna = Colors.grey;
+                  }
                 });
               },
             ),
